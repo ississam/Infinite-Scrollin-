@@ -1,0 +1,35 @@
+.card {
+  font-size: 1em;
+  overflow: hidden;
+  padding: 5;
+  border: none;
+  border-radius: 0.28571429rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  margin-top: 20px;
+}
+.card-block {
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  box-shadow: none;
+}
+
+.border-bottom-danger {
+  border-bottom: 0.25rem solid #e74a3b !important;
+}
+
+.image-border {
+  border: 10px white solid;
+}
+
+.center-block {
+  text-align: center;
+  margin-bottom: 5%;
+  margin-left: 40%;
+  margin-left: 40%;
+  width: 20%;
+  border-bottom: 0.25rem solid #5a5c69 !important;
+}
