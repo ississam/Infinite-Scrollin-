@@ -33,3 +33,6 @@
   width: 20%;
   border-bottom: 0.25rem solid #5a5c69 !important;
 }
+.center-text{
+    text-align: center;
+}
