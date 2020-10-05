@@ -1,4 +1,4 @@
-This Reactjs app display a list tof he most starred Github repos that were created in the last 30 days, the app communicate with json API gitbub, by json 
+This Reactjs app display a list top he most starred Github repos that were created in the last 30 days, the app communicate with json API gitbub, by json 
 And paginate data on scrolling,to use the app, you need :
 
 ## Steps to install the project
