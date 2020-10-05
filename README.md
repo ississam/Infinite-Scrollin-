@@ -1,1 +1,1 @@
-Alt- # H1 frontend-coding-challenge
+# Alt-frontend-coding-challenge
