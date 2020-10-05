@@ -12,10 +12,21 @@ export default class Landing extends Component {
     gitlist: [],
     per: 2,
     page: 1,
+    priorDt:'',
     totalPages: null,
     scrolling: false,
   };
 
+
+priorDate(){
+  var today = new Date()
+  var priorDate = new Date();
+  priorDate.setDate(priorDate.getDate() - 30)
+  var ddd=(priorDate.getFullYear() +'-' +(priorDate.getMonth()+1).toString().padStart(2, "0")+'-' +priorDate.getDate().toString().padStart(2, "0"))
+  console.log('date priore est:',ddd)
+  this.setState({priorDt:ddd})
+return(ddd)
+}
 //--------------------function keep creation date of repository and calculate the number of days
   dateDiff(createDate) {
     let date1 = new Date(createDate);
@@ -25,7 +36,6 @@ export default class Landing extends Component {
         Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())) /
         (1000 * 60 * 60 * 24)
     );
-
     return "Submited  " + jours + "  days ago";
   }
   //--------------------function keep creation date of repository and calculate the number of days
@@ -33,6 +43,7 @@ export default class Landing extends Component {
 
 ///////------------------ fetch API data
   componentWillMount() {
+    this.priorDate()
     this.loadList();
     this.scrollListener = window.addEventListener("scroll", (e) => {
       this.handelScroll(e);
@@ -59,8 +70,13 @@ export default class Landing extends Component {
 
 //----------------------------Load new rows after scrolling
   loadList = () => {
-    const { per, page, gitlist } = this.state;
-    const url = `https://api.github.com/search/repositories?q=created:%3E2017-10-22&sort=stars&order=desc&page=${page}`;
+    const { per, page,  gitlist } = this.state;
+    this.priorDate()
+// alert({priorDate})
+    const url = `https://api.github.com/search/repositories?q=created:>${this.priorDate()}&sort=stars&order=desc&page=${page}`;
+
+console.log('URLapi is:', url)
+
     axios
       .get(url)
       .then((res) => {
@@ -119,7 +135,7 @@ export default class Landing extends Component {
                   <h4>Repository name : {items.name}</h4>
                   <h6>Description:</h6>{" "}
                   {items.description == null
-                    ? "Aucune description disponible pour ce repositoy"
+                    ? "No Description available for this repository"
                     : items.description}
                   <hr></hr>
                   <span className="mr-3 badge badge-warning">
